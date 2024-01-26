@@ -4,8 +4,9 @@ from src.db.db import User, db
 from src.api.v1.users.router import users_router
 from src.api.v1.auth.router import auth_router
 from src.services.users import current_active_user
+import logging
 
-
+logger = logging.getLogger(__name__)
 app = FastAPI()
 
 app.include_router(auth_router)
@@ -25,3 +26,4 @@ async def on_startup():
             User
         ],
     )
+    logger.info(f"start")
